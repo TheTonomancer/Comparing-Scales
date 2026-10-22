@@ -1,17 +1,17 @@
 import java.util.*;
 
-public class SeparatingAnswerIntoRootAndType {
+public class Main {
   
   public static void main(String[] args) {
   
     System.out.print("choose a scale: ");
     String scaleOne = userChoosesScale();
 
-    String rootNote = getRootSubString(scaleOne);
-    String scaleType = getScaleTypeSubString(scaleOne);
+    String[] rootAndType = separateInputIntoRootAndType(scaleOne);
 
-    System.out.println("\nRoot: " + rootNote);
-    System.out.println("Type: " + scaleType);
+
+    System.out.println(rootAndType[0]);
+    System.out.println(rootAndType[1]);
 
   }
 
@@ -21,18 +21,15 @@ public class SeparatingAnswerIntoRootAndType {
     return userScale;
   }
 
-  public static String getRootSubString(String scaleString) {
+  public static String[] separateInputIntoRootAndType(String scaleString) {
     
     int spaceIndex = scaleString.indexOf(' ');
     
-    return scaleString.substring(0, spaceIndex);
-  }
-
-  public static String getScaleTypeSubString(String scaleString) {
+    String root = scaleString.substring(0, spaceIndex);
+    String type = scaleString.substring(spaceIndex + 1, scaleString.length());
     
-    int spaceIndex = scaleString.indexOf(' ');
-
-    return scaleString.substring(spaceIndex + 1, scaleString.length());
+    String[] scaleElements = {root, type};
+    return scaleElements;
   }
 
 }
